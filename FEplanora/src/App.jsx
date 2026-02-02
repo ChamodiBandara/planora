@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 // Admin Pages
 import EventsDashboard from "./pages/Admin/EventsDashboard"
 import CommitteeTasks from "./pages/Admin/CommitteeTasks";
+import EventTeam from "./pages/Admin/EventTeam";
 
 import HomePage from "./pages/HomePage";
 
@@ -13,6 +14,7 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 // Member Pages
 import MemberDashboard from "./pages/Member/MemberDashboard";
 import MemberLogin from "./pages/Member/MemberLogin";
+import EventsTeam from "./pages/Admin/EventTeam";
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/admin/event/:eventId/tasks" element={<CommitteeTasks />} />
         <Route path="/admin/signup" element={<AdminSignup />} />
         <Route path="/admin/login" element={<AdminLogin />} />
+         <Route path="/admin/eventsteam" element={<EventsTeam />} />
 
         {/* Member Routes */}
         <Route path="/member/login" element={<MemberLogin />} />

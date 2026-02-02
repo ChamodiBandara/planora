@@ -5,48 +5,38 @@ import API from "../../api"; // axios instance
 export default function AdminSignup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
   const [error, setError] = useState("");
-// update form data when input change
+  // update form data when input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-// run when user clicks signup
+  // run when user clicks signup
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
 
-    const { FirstName, LastName, email, password, confirmPassword } = formData;
+    const { email, password } = formData;
 
     //validation
-    if (!FirstName || !LastName || !email || !password || !confirmPassword) {
+    if (!email || !password) {
       setError("All fields are required.");
-      return;
-    }
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
       return;
     }
 
     try {
       // send data to the backend
-      await API.post("/admin/signup", { FirstName, LastName, email, password });
+      await API.post("/admin/signup", { email, password });
 
       // alert when signup is successful
-      alert(`Welcome to PlanOra, ${FirstName}!`);
+      alert(`Welcome to PlanOra!`);
 
       // Reset the value of form
       setFormData({
-        FirstName: "",
-        LastName: "",
         email: "",
         password: "",
-        confirmPassword: "",
       });
 
       // Redirect to admin events page
@@ -67,32 +57,6 @@ export default function AdminSignup() {
           {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
           <form onSubmit={handleSignup} className="space-y-4">
-            {/* First Name */}
-            <div>
-              <label className="block mb-1 font-medium">First Name</label>
-              <input
-                type="text"
-                name="FirstName"
-                value={formData.FirstName}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 rounded-lg"
-                placeholder="Enter first name"
-              />
-            </div>
-
-            {/* Last Name */}
-            <div>
-              <label className="block mb-1 font-medium">Last Name</label>
-              <input
-                type="text"
-                name="LastName"
-                value={formData.LastName}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 rounded-lg"
-                placeholder="Enter last name"
-              />
-            </div>
-
             {/* Email */}
             <div>
               <label className="block mb-1 font-medium">Email</label>
@@ -116,19 +80,6 @@ export default function AdminSignup() {
                 onChange={handleChange}
                 className="w-full border px-3 py-2 rounded-lg"
                 placeholder="Enter password"
-              />
-            </div>
-
-            {/* Confirm Password */}
-            <div>
-              <label className="block mb-1 font-medium">Confirm Password</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 rounded-lg"
-                placeholder="Confirm password"
               />
             </div>
 

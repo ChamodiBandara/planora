@@ -54,7 +54,7 @@ export default function HomePage() {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-white mb-3">
-                Committee President
+                Admin
               </h3>
               <p className="text-gray-200 mb-6 text-base leading-relaxed">
                 Access administrative features to create and manage campus events with full control.
@@ -78,7 +78,7 @@ export default function HomePage() {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-white mb-3">
-                Committee Member
+               User
               </h3>
               <p className="text-gray-200 mb-6 text-base leading-relaxed">
                 Join events, view schedules, register, and stay connected with your committee community.
